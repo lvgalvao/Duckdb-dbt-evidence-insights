@@ -8,6 +8,17 @@ packages = [{include = "duckdb_dbt_evidence_insights"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+duckdb = "^0.9.2"
+google-cloud-bigquery = "^3.17.1"
+google-auth = "^2.27.0"
+google-cloud-bigquery-storage = "^2.24.0"
+pyarrow = "^15.0.0"
+pandas = "^2.2.0"
+fire = "^0.5.0"
+loguru = "^0.7.2"
+pydantic = "^2.6.0"
+pytest = "^8.0.0"
+ruff = "^0.2.0"
 
 
 [build-system]
