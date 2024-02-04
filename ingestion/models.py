@@ -5,9 +5,6 @@ from datetime import datetime
 from typing import Optional
 import pandas as pd
 
-DUCKDB_EXTENSION = ["aws", "httpfs"]
-
-
 class File(BaseModel):
     filename: Optional[str]
     project: Optional[str]
