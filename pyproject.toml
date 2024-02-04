@@ -43,4 +43,4 @@ poetry run python3 -m ingestion.pipeline \
 		--destination $DESTINATION
 """
 format = "ruff format ."
-test = "pytest tests -v"
+test = "pytest tests -v --disable-pytest-warnings"

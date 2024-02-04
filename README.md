@@ -2,9 +2,14 @@
 
 ## Descrição
 
+
 O projeto DuckDB Evidence Insights é uma solução de ETL (Extração, Transformação e Carga) de dados que visa coletar, processar e armazenar dados relacionados a downloads de pacotes do Python do repositório PyPI. 
 
 O projeto utiliza o DuckDB como o mecanismo de armazenamento de dados e fornece uma infraestrutura para realizar análises e consultas sobre esses dados. O vídeo tutorial pode ser [visto aqui](https://www.youtube.com/watch?v=3pLKTmdWDXk&t=1326s)
+
+## Arquitetura
+
+![pic](./pic/pic0.png)
 
 ## Propósito
 
@@ -75,8 +80,10 @@ poety install
 ### 4) Realizar os testes
 
 ```bash
-task tests
+task test
 ```
+
+![pic](./pic/pic5.png)
 
 ### 5) Configurando GCP e AWS
 
@@ -102,7 +109,10 @@ DESTINATION=s3
 Além de configurar também o seu arquivo `demo-pypi.json` utilizando o `demo-pypi-exemplo.json`
 Com sua `Google Application Credentials`
 
-### 5) Rodar a Pipeline
+### 6) Rodar a Pipeline
 ```bash
 task run
 ```
+
+![pic](./pic/pic6.png)
+
