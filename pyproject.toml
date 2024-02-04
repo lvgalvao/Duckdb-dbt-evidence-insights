@@ -20,6 +20,7 @@ pydantic = "^2.6.0"
 pytest = "^8.0.0"
 ruff = "^0.2.0"
 taskipy = "^1.12.2"
+db-dtypes = "^1.2.0"
 
 
 [build-system]
