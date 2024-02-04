@@ -26,7 +26,6 @@ def build_pypi_query(
     """
 
 
-
 def get_bigquery_client(project_name: str) -> bigquery.Client:
     """Get Big Query client"""
     try:

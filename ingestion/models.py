@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List, Optional, Union, Annotated
 
+
 class PypiJobParameters(BaseModel):
     start_date: str = "2019-04-01"
     end_date: str = "2023-11-30"
