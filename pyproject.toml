@@ -20,6 +20,7 @@ pytest = "^8.0.0"
 ruff = "^0.2.0"
 taskipy = "^1.12.2"
 db-dtypes = "^1.2.0"
+python-dotenv = "^1.0.1"
 
 
 [build-system]
@@ -27,6 +28,18 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
-run = "poetry run python -m ingestion.pipeline"
+run = """
+export $(cat .env | xargs)
+poetry run python3 -m ingestion.pipeline \
+		--start_date $START_DATE \
+		--end_date $END_DATE \
+		--pypi_project $PYPI_PROJECT \
+		--table_name $TABLE_NAME \
+		--s3_path $S3_PATH \
+		--aws_profile $AWS_PROFILE \
+		--gcp_project $GCP_PROJECT \
+		--timestamp_column $TIMESTAMP_COLUMN \
+		--destination $DESTINATION
+"""
 format = "ruff format ."
 test = "pytest tests -v"
