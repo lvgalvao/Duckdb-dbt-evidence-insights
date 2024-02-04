@@ -4,7 +4,6 @@ from google.oauth2 import service_account
 from google.auth.exceptions import DefaultCredentialsError
 from ingestion.models import PypiJobParameters
 from loguru import logger
-import time
 import pandas as pd
 
 PYPI_PUBLIC_DATASET = "bigquery-public-data.pypi.file_downloads"
