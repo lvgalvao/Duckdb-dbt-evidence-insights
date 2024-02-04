@@ -31,6 +31,7 @@ def test_build_pypi_query():
     """
     assert query.strip() == expected_query.strip()
 
+
 @pytest.fixture
 def file_downloads_df():
     # Set up DuckDB in-memory database
@@ -69,6 +70,7 @@ def file_downloads_df():
     conn.execute("COPY tbl FROM 'tests/sample.csv' (HEADER)")
     # Create DataFrame
     return conn.execute("SELECT * FROM tbl").df()
+
 
 def test_file_downloads_validation(file_downloads_df):
     try:

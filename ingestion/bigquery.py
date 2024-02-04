@@ -53,15 +53,7 @@ def get_bigquery_result(
 ) -> pd.DataFrame:
     """Get query result from BigQuery and yield rows as dictionaries."""
     try:
-        # Start measuring time
-        start_time = time.time()
-        # Run the query and directly load into a DataFrame
-        logger.info(f"Running query: {query_str}")
         dataframe = bigquery_client.query(query_str).to_dataframe()
-        # Log the time taken for query execution and data loading
-        elapsed_time = time.time() - start_time
-        logger.info(f"Query executed and data loaded in {elapsed_time:.2f} seconds")
-        # Iterate over DataFrame rows and yield as dictionaries
         return dataframe
 
     except Exception as e:
