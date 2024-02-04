@@ -9,9 +9,7 @@ import pandas as pd
 PYPI_PUBLIC_DATASET = "bigquery-public-data.pypi.file_downloads"
 
 
-def build_pypi_query(
-    pypi_public_dataset: str = PYPI_PUBLIC_DATASET
-) -> str:
+def build_pypi_query(pypi_public_dataset: str = PYPI_PUBLIC_DATASET) -> str:
     return f"""
     SELECT *
     FROM
@@ -21,6 +19,7 @@ def build_pypi_query(
         AND timestamp >= TIMESTAMP("2023-04-01")
         AND timestamp < TIMESTAMP("2023-04-02")
     """
+
 
 def get_bigquery_client(project_name: str) -> bigquery.Client:
     """Get Big Query client"""

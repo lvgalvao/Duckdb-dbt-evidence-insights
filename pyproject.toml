@@ -29,3 +29,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
 run = "poetry run python -m ingestion.pipeline"
+format = "ruff format ."
