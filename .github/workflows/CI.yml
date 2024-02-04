@@ -2,7 +2,7 @@ name: ci
 
 on: push
 jobs:
-    test:
+    build-and-test:
         runs-on: ubuntu-latest
         steps:
             - name: Baixar o repositório
@@ -20,4 +20,4 @@ jobs:
               run: poetry install
 
             - name: Rodar minha rotina de testes com o Poetry
-              run: poetry run pytest tests/test_contrato.py
+              run: poetry run pytest tests -v
