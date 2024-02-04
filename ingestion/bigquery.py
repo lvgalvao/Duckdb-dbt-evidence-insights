@@ -2,6 +2,7 @@ import os
 from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.auth.exceptions import DefaultCredentialsError
+from ingestion.models import PypiJobParameters
 from loguru import logger
 import time
 import pandas as pd
@@ -9,16 +10,21 @@ import pandas as pd
 PYPI_PUBLIC_DATASET = "bigquery-public-data.pypi.file_downloads"
 
 
-def build_pypi_query(pypi_public_dataset: str = PYPI_PUBLIC_DATASET) -> str:
+def build_pypi_query(
+    params: PypiJobParameters, pypi_public_dataset: str = PYPI_PUBLIC_DATASET
+) -> str:
+    # Query the public PyPI dataset from BigQuery
+    # /!\ This is a large dataset, filter accordingly /!\
     return f"""
     SELECT *
     FROM
         `{pypi_public_dataset}`
     WHERE
-        project = 'duckdb'
-        AND timestamp >= TIMESTAMP("2023-04-01")
-        AND timestamp < TIMESTAMP("2023-04-02")
+        project = '{params.pypi_project}'
+        AND {params.timestamp_column} >= TIMESTAMP("{params.start_date}")
+        AND {params.timestamp_column} < TIMESTAMP("{params.end_date}")
     """
+
 
 
 def get_bigquery_client(project_name: str) -> bigquery.Client:
