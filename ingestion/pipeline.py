@@ -5,6 +5,7 @@ from ingestion.bigquery import (
 )
 from ingestion.models import PypiJobParameters
 import fire
+import duckdb
 
 def main(params: PypiJobParameters):
     df = get_bigquery_result(
@@ -12,7 +13,8 @@ def main(params: PypiJobParameters):
         bigquery_client=get_bigquery_client(project_name=params.gcp_project)
     )
     print(df)
-    print("Hello Pipeline!")
+    conn = duckdb.connect()
+    conn.sql("COPY (SELECT * FROM df) TO 'duckdb.csv' (FORMAT csv, HEADER true)")
 
 
 if __name__ == "__main__":
